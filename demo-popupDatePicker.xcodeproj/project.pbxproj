@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EFFC741D1EC77B6E004814DB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFC741C1EC77B6E004814DB /* main.m */; };
+		EFFC74201EC77B6E004814DB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFC741F1EC77B6E004814DB /* AppDelegate.m */; };
+		EFFC74281EC77B6E004814DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFC74271EC77B6E004814DB /* Assets.xcassets */; };
+		EFFC742B1EC77B6E004814DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFC74291EC77B6E004814DB /* LaunchScreen.storyboard */; };
+		EFFC74341EC77BDD004814DB /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EFFC74331EC77BDD004814DB /* MainViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EFFC74181EC77B6E004814DB /* demo-popupDatePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "demo-popupDatePicker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFFC741C1EC77B6E004814DB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EFFC741E1EC77B6E004814DB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EFFC741F1EC77B6E004814DB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EFFC74271EC77B6E004814DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFFC742A1EC77B6E004814DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFFC742C1EC77B6E004814DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFFC74321EC77BDD004814DB /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		EFFC74331EC77BDD004814DB /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFFC74151EC77B6E004814DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EFFC740F1EC77B6E004814DB = {
+			isa = PBXGroup;
+			children = (
+				EFFC741A1EC77B6E004814DB /* demo-popupDatePicker */,
+				EFFC74191EC77B6E004814DB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EFFC74191EC77B6E004814DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFFC74181EC77B6E004814DB /* demo-popupDatePicker.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFFC741A1EC77B6E004814DB /* demo-popupDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				EFFC741E1EC77B6E004814DB /* AppDelegate.h */,
+				EFFC741F1EC77B6E004814DB /* AppDelegate.m */,
+				EFFC74321EC77BDD004814DB /* MainViewController.h */,
+				EFFC74331EC77BDD004814DB /* MainViewController.m */,
+				EFFC74271EC77B6E004814DB /* Assets.xcassets */,
+				EFFC74291EC77B6E004814DB /* LaunchScreen.storyboard */,
+				EFFC742C1EC77B6E004814DB /* Info.plist */,
+				EFFC741B1EC77B6E004814DB /* Supporting Files */,
+			);
+			path = "demo-popupDatePicker";
+			sourceTree = "<group>";
+		};
+		EFFC741B1EC77B6E004814DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EFFC741C1EC77B6E004814DB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFFC74171EC77B6E004814DB /* demo-popupDatePicker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFFC742F1EC77B6E004814DB /* Build configuration list for PBXNativeTarget "demo-popupDatePicker" */;
+			buildPhases = (
+				EFFC74141EC77B6E004814DB /* Sources */,
+				EFFC74151EC77B6E004814DB /* Frameworks */,
+				EFFC74161EC77B6E004814DB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "demo-popupDatePicker";
+			productName = "demo-popupDatePicker";
+			productReference = EFFC74181EC77B6E004814DB /* demo-popupDatePicker.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFFC74101EC77B6E004814DB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = shoshino21;
+				TargetAttributes = {
+					EFFC74171EC77B6E004814DB = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = EFFC74131EC77B6E004814DB /* Build configuration list for PBXProject "demo-popupDatePicker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFFC740F1EC77B6E004814DB;
+			productRefGroup = EFFC74191EC77B6E004814DB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFFC74171EC77B6E004814DB /* demo-popupDatePicker */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFFC74161EC77B6E004814DB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFC742B1EC77B6E004814DB /* LaunchScreen.storyboard in Resources */,
+				EFFC74281EC77B6E004814DB /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFFC74141EC77B6E004814DB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFC74201EC77B6E004814DB /* AppDelegate.m in Sources */,
+				EFFC74341EC77BDD004814DB /* MainViewController.m in Sources */,
+				EFFC741D1EC77B6E004814DB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EFFC74291EC77B6E004814DB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFFC742A1EC77B6E004814DB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFFC742D1EC77B6E004814DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EFFC742E1EC77B6E004814DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EFFC74301EC77B6E004814DB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "demo-popupDatePicker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "shoshino21.demo-popupDatePicker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EFFC74311EC77B6E004814DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "demo-popupDatePicker/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "shoshino21.demo-popupDatePicker";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFFC74131EC77B6E004814DB /* Build configuration list for PBXProject "demo-popupDatePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFC742D1EC77B6E004814DB /* Debug */,
+				EFFC742E1EC77B6E004814DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFFC742F1EC77B6E004814DB /* Build configuration list for PBXNativeTarget "demo-popupDatePicker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFC74301EC77B6E004814DB /* Debug */,
+				EFFC74311EC77B6E004814DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFFC74101EC77B6E004814DB /* Project object */;
+}
