@@ -11,7 +11,6 @@
 #define kScreenBounds     [UIScreen mainScreen].bounds
 #define kScreenWidth      kScreenBounds.size.width
 #define kScreenHeight     kScreenBounds.size.height
-#define kStatusBarHeight  [UIApplication sharedApplication].statusBarFrame.size.height
 
 static CGFloat const kDefaultDatePickerHeight = 216.f;
 static CGFloat const kPopupAnimateDuration = 0.25f;
@@ -20,10 +19,12 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
 @interface MainViewController () <UITableViewDataSource, UITableViewDelegate> {
   UITableView *_myTableView;
   NSDateFormatter *_myDateFormatter;
+  NSString *_currentDateStr;
 }
 
 @property (nonatomic, strong) UIDatePicker *myDatePicker;
 @property (nonatomic, strong) UIView *myDatePickerOverlayView;
+@property (nonatomic, assign, readonly) BOOL isDatePickerShowing;
 
 @end
 
@@ -40,7 +41,7 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
-  self.navigationItem.title = @"SHODatePicker";
+  self.navigationItem.title = @"SHODatePickerDemo";
 }
 
 #pragma mark - Initialize
@@ -48,6 +49,8 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
 - (void)initProperties {
   _myDateFormatter = [NSDateFormatter new];
   _myDateFormatter.dateFormat = @"yyyy/MM/dd";
+
+  _currentDateStr = kDefaultBirthDateStr;
 }
 
 - (void)initUI {
@@ -56,7 +59,6 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
 
   _myTableView.dataSource = self;
   _myTableView.delegate = self;
-  _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
   [self.view addSubview:_myTableView];
 }
 
@@ -65,16 +67,16 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
 - (UIDatePicker *)myDatePicker {
   if (!_myDatePicker) {
     CGRect frame = CGRectMake(0,
-                              CGRectGetHeight(self.view.frame) - kDefaultDatePickerHeight,
+                              kScreenHeight,    // 一開始配置在螢幕之外
                               kScreenWidth,
                               kDefaultDatePickerHeight);
 
     _myDatePicker = [[UIDatePicker alloc] initWithFrame:frame];
-    _myDatePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh_TW"];
     _myDatePicker.backgroundColor = [UIColor whiteColor];
     _myDatePicker.date = [_myDateFormatter dateFromString:kDefaultBirthDateStr];
     _myDatePicker.maximumDate = [NSDate date];
     _myDatePicker.datePickerMode = UIDatePickerModeDate;
+    _myDatePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh_TW"];
 
     [_myDatePicker addTarget:self
                       action:@selector(datePickerValueChanged:)
@@ -88,22 +90,22 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
 
 - (UIView *)myDatePickerOverlayView {
   if (!_myDatePickerOverlayView) {
-    _myDatePickerOverlayView = [[UIView alloc] initWithFrame:CGRectMake(0,
-                                                                        0,
-                                                                        kScreenWidth,
-                                                                        kScreenHeight - kDefaultDatePickerHeight)];
+    CGRect frame = CGRectMake(0,
+                              0,
+                              kScreenWidth,
+                              kScreenHeight - kDefaultDatePickerHeight);
 
+    _myDatePickerOverlayView = [[UIView alloc] initWithFrame:frame];
     _myDatePickerOverlayView.hidden = YES;
 
-    // 加上顏色便於展示用
-    _myDatePickerOverlayView.backgroundColor = [UIColor colorWithRed:0.6 green:0.3 blue:0.3 alpha:0.5];
+    // 便於展示用
+    _myDatePickerOverlayView.backgroundColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.9 alpha:0.3];
 
     // 將 OverlayView 直接加入目前的 keyWindow 當中
-    // 以保護到所有畫面上的元件不被誤點，也包括 NavigationBar, TabBar 上的按鈕
+    // 以保護所有畫面上的元件不被誤點，包括 NavigationBar, TabBar 上的按鈕
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
     [currentWindow addSubview:_myDatePickerOverlayView];
 
-    // 加入手勢，點擊後收回 DatePicker
     UITapGestureRecognizer *tapGesture =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(datePickerOverlayViewSingleTap:)];
@@ -115,28 +117,54 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
   return _myDatePickerOverlayView;
 }
 
+- (BOOL)isDatePickerShowing {
+  return !(self.myDatePickerOverlayView.isHidden);
+}
+
+#pragma mark - Actions
+
+- (IBAction)datePickerValueChanged:(UIDatePicker *)sender {
+  _currentDateStr = [_myDateFormatter stringFromDate:sender.date];
+
+  // 僅更新該列表格的顯示
+  NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+  [_myTableView reloadRowsAtIndexPaths:@[ indexPath ]
+                      withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (IBAction)datePickerOverlayViewSingleTap:(UITapGestureRecognizer *)tapGesture {
+  [self hideDatePicker];
+}
+
 #pragma mark - Private Methods
 
 - (void)hideKeyboard {
-  // 隱藏螢幕鍵盤
   [self.view endEditing:YES];
 }
 
-- (void)showDatePicker {
+- (void)switchDatePicker:(BOOL)show {
+  self.myDatePickerOverlayView.hidden = !show;
 
+  CGAffineTransform transform = show
+  ? CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -kDefaultDatePickerHeight)   // 彈出
+  : CGAffineTransformIdentity;                                                            // 收起
+
+  [UIView animateWithDuration:kPopupAnimateDuration animations:^{
+    [self.myDatePicker setTransform:transform];
+  }];
+}
+
+- (void)showDatePicker {
+  if (self.isDatePickerShowing) { return; }
+
+  [self hideKeyboard];
+  [self switchDatePicker:YES];
 }
 
 - (void)hideDatePicker {
+  if (!self.isDatePickerShowing) { return; }
 
-}
-
-- (void)datePickerValueChanged:(UIDatePicker *)sender {
-  NSString *currentDateStr = [_myDateFormatter stringFromDate:sender.date];
-  NSLog(@"%@", currentDateStr);
-}
-
-- (void)datePickerOverlayViewSingleTap:(UITapGestureRecognizer *)tapGesture {
-
+  [self switchDatePicker:NO];
 }
 
 #pragma mark - UITableView
@@ -154,7 +182,7 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  static NSString *cellIdentifierStr;
+  static NSString *cellIdentifierStr = @"MyCell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierStr];
 
   if (!cell) {
@@ -162,22 +190,18 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
                                   reuseIdentifier:cellIdentifierStr];
   }
 
-  cell.textLabel.text = @"Birthday";
-  cell.detailTextLabel.text = @"12123";
-
   cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+  cell.textLabel.text = @"Birthday";
+  cell.detailTextLabel.text = _currentDateStr;
 
   return cell;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (editingStyle == UITableViewCellEditingStyleDelete) {
-  }
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  self.myDatePicker.hidden = NO;
-  self.myDatePickerOverlayView.hidden = NO;
+  if (indexPath.section == 0 && indexPath.row == 0) {
+    [self showDatePicker];
+  }
 }
 
 @end
