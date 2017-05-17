@@ -60,6 +60,13 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
   _myTableView.dataSource = self;
   _myTableView.delegate = self;
   [self.view addSubview:_myTableView];
+
+  // Dummy button for demo
+  UIBarButtonItem *dummyBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                 target:self
+                                                                                 action:nil];
+
+  self.navigationItem.rightBarButtonItem = dummyBarButton;
 }
 
 #pragma mark - Custom Accessors
@@ -78,6 +85,7 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
     _myDatePicker.datePickerMode = UIDatePickerModeDate;
     _myDatePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh_TW"];
 
+    // 變更日期時觸發事件
     [_myDatePicker addTarget:self
                       action:@selector(datePickerValueChanged:)
             forControlEvents:UIControlEventValueChanged];
@@ -106,6 +114,7 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
     UIWindow *currentWindow = [UIApplication sharedApplication].keyWindow;
     [currentWindow addSubview:_myDatePickerOverlayView];
 
+    // 點擊後收起用手勢
     UITapGestureRecognizer *tapGesture =
     [[UITapGestureRecognizer alloc] initWithTarget:self
                                             action:@selector(datePickerOverlayViewSingleTap:)];
