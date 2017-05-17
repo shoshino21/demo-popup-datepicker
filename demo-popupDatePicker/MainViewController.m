@@ -62,9 +62,10 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
   [self.view addSubview:_myTableView];
 
   // Dummy button for demo
-  UIBarButtonItem *dummyBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                 target:self
-                                                                                 action:nil];
+  UIBarButtonItem *dummyBarButton =
+  [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                target:self
+                                                action:nil];
 
   self.navigationItem.rightBarButtonItem = dummyBarButton;
 }
@@ -107,7 +108,8 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
     _myDatePickerOverlayView.hidden = YES;
 
     // 便於展示用
-    _myDatePickerOverlayView.backgroundColor = [UIColor colorWithRed:0.3 green:0.7 blue:0.9 alpha:0.3];
+    _myDatePickerOverlayView.backgroundColor =
+    [UIColor colorWithRed:0.3 green:0.7 blue:0.9 alpha:0.3];
 
     // 將 OverlayView 直接加入目前的 keyWindow 當中
     // 以保護所有畫面上的元件不被誤點，包括 NavigationBar, TabBar 上的按鈕
@@ -186,11 +188,15 @@ static NSString *const kDefaultBirthDateStr = @"1990/01/01";
   return 1;
 }
 
-- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+- (nullable NSString *)tableView:(UITableView *)tableView
+         titleForHeaderInSection:(NSInteger)section
+{
   return @"For Demo";
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
   static NSString *cellIdentifierStr = @"MyCell";
   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifierStr];
 
